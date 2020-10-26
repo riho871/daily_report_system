@@ -17,7 +17,7 @@
                 ${param.content}
             </div>
             <div id="footer">
-                by Riho.
+                by リホ・パンチ
             </div>
         </div>
     </body>
