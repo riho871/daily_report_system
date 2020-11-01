@@ -85,9 +85,9 @@ public class EmployeesUpdateServlet extends HttpServlet {
                 em.getTransaction().begin();
                 em.getTransaction().commit();
                 request.getSession().setAttribute("flush", "更新が完了しました。");
-                request.getSession().removeAttribute("employee_id");
                 em.close();
-
+                
+                request.getSession().removeAttribute("employee_id");
                 response.sendRedirect(request.getContextPath() + "/employees/index");
             }
         }
