@@ -130,19 +130,23 @@ table#report_list th {
 }
 
 table#report_list .report_name {
-    width: 20%;
+    width: 16%;
     padding: 10px 2%;
 }
 table#report_list .report_date {
-    width: 20%;
+    width: 16%;
 }
 
 table#report_list .report_title {
-    width: 37%;
+    width: 34%;
+}
+
+table#report_list .report_yoine {
+    width: 12%;
 }
 
 table#report_list .report_action {
-    width: 13%;
+    width: 12%;
 }
 
 pre {
