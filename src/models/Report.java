@@ -50,6 +50,9 @@ public class Report {
 
     @Column(name = "title", length = 255, nullable = false)
     private String title;
+    
+    @Column(name = "yoine", nullable = false)
+    private Integer yoine;
 
     @Lob
     @Column(name = "content", nullable = false)
@@ -91,6 +94,14 @@ public class Report {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    
+    public Integer getYoine() {
+        return yoine;
+    }
+
+    public void setYoine(Integer yoine) {
+        this.yoine = yoine;
     }
 
     public String getContent() {
