@@ -45,9 +45,7 @@
                 <c:if test="${sessionScope.login_employee.id == report.employee.id}">
                     <p><a href="<c:url value="/reports/edit?id=${report.id}" />">この日報を編集する</a></p>
                 </c:if>
-                <c:else test="${sessionScope.login_employee.id == report.employee.id}">
-                    <p><a href="<c:url value="/reports/edit?id=${report.id}" />">この日報にいいねする</a></p>
-                </c:else>
+                    <p><a href="<c:url value="/reports/index?id=${report.id}" /><c:url value="/topPage/index?id=${report.id}" />">この日報にいいねする</a></p>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>
