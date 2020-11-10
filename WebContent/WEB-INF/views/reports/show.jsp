@@ -45,6 +45,7 @@
                 <c:if test="${sessionScope.login_employee.id == report.employee.id}">
                     <p><a href="<c:url value="/reports/edit?id=${report.id}" />">この日報を編集する</a></p>
                 </c:if>
+                    <!--<p><a href="<c:url value='/reports/yoine' />">この日報にいいねする</a></p>-->
                     <p><a href="<c:url value="/reports/index?id=${report.id}" /> &gt; <c:url value="/topPage/index?id=${report.id}" />">この日報にいいねする</a></p>
             </c:when>
             <c:otherwise>
