@@ -54,6 +54,7 @@ public class ReportsYoineServlet extends HttpServlet {
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
+                //em.persist(r);
                 em.getTransaction().commit();
                 request.getSession().setAttribute("flush", "いいねしました。");
                 em.close();
