@@ -50,9 +50,6 @@ public class Report {
 
     @Column(name = "title", length = 255, nullable = false)
     private String title;
-    
-    @Column(name = "yoine", nullable = false)
-    private Integer yoine;
 
     @Lob
     @Column(name = "content", nullable = false)
@@ -63,6 +60,9 @@ public class Report {
 
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
+
+    @Column(name = "yoine", nullable = false)
+    private Integer yoine;
 
     public Integer getId() {
         return id;
@@ -95,14 +95,6 @@ public class Report {
     public void setTitle(String title) {
         this.title = title;
     }
-    
-    public Integer getYoine() {
-        return yoine;
-    }
-
-    public void setYoine(Integer yoine) {
-        this.yoine = yoine;
-    }
 
     public String getContent() {
         return content;
@@ -126,6 +118,14 @@ public class Report {
 
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public Integer getYoine() {
+        return yoine;
+    }
+
+    public void setYoine(Integer yoine) {
+        this.yoine = yoine;
     }
 
 }
