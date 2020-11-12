@@ -6,7 +6,7 @@
         <c:choose>
             <c:when test="${report != null}">
                 <h2>日報　詳細ページ</h2>
-
+                <form method="POST" action="<c:url value='/reports/yoine' />"></form>
                 <table>
                     <tbody>
                         <tr>

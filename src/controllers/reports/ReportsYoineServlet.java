@@ -1,9 +1,9 @@
 package controllers.reports;
 
 import java.io.IOException;
-import java.util.List;//
+import java.util.List;
 
-import javax.persistence.EntityManager;//
+import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import models.Employee;
 import models.Report;
 import models.YoineCnt;
-import models.validators.ReportValidator;//
-import utils.DBUtil;//
+import models.validators.ReportValidator;
+import utils.DBUtil;
 
 /**
  * Servlet implementation class ReportsYoineServlet
@@ -80,11 +80,11 @@ public class ReportsYoineServlet extends HttpServlet {
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
-                //em.persist(r);
                 em.getTransaction().commit();
                 request.getSession().setAttribute("flush", "いいねしました。");
                 em.close();
 
+                request.getSession().removeAttribute("report_id");
                 response.sendRedirect(request.getContextPath() + "/reports/index");
             }
         }
