@@ -1,9 +1,9 @@
 package controllers.reports;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.List;//
 
-import javax.persistence.EntityManager;
+import javax.persistence.EntityManager;//
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Report;
 import models.Yoine;
-import models.validators.ReportValidator;
-import utils.DBUtil;
+import models.validators.ReportValidator;//
+import utils.DBUtil;//
 
 /**
  * Servlet implementation class ReportsYoineServlet
@@ -36,38 +36,20 @@ public class ReportsYoineServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 初回起動を判定するための処理
-        // アプリケーションスコープから値を取得
         ServletContext sc = this.getServletContext();
         Report r = (Report) sc.getAttribute("report");
 
-        // 初回起動判定の続き
-        // アプリケーションスコープに値がなければnewする
-        if(r == null) {
-            r = new Report();
-            sc.setAttribute("report", r);
-        }
+        request.setCharacterEncoding("UTF-8");
+        String report = request.getParameter("action");
 
-        // リクエストパラメーターの取得
-            request.setCharacterEncoding("UTF-8");
-            String report = request.getParameter("action");
-
-
-        // いいねボタン押されたら
         if (report != null) {
-
-            // Yoineでいいねを加算
             Yoine y = new Yoine();
             y.yoineCount(r);
-
-            // いいねの数をアプリケーションスコープに保存
             sc.setAttribute("report", r);
         }
 
-        // フォワード
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/index.jsp");
         rd.forward(request, response);
-
     }
 
     /**
