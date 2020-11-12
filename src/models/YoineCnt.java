@@ -1,6 +1,6 @@
 package models;
 
-public class Yoine {
+public class YoineCnt {
 
     public void yoineCount(Report r) {
         int count = r.getYoine();

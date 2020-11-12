@@ -5,15 +5,15 @@ import java.util.List;//
 
 import javax.persistence.EntityManager;//
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Employee;
 import models.Report;
-import models.Yoine;
+import models.YoineCnt;
 import models.validators.ReportValidator;//
 import utils.DBUtil;//
 
@@ -36,16 +36,20 @@ public class ReportsYoineServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServletContext sc = this.getServletContext();
-        Report r = (Report) sc.getAttribute("report");
+        EntityManager em = DBUtil.createEntityManager();
 
-        request.setCharacterEncoding("UTF-8");
-        String report = request.getParameter("action");
+        Report r = em.find(Report.class, Integer.parseInt(request.getParameter("id")));
 
-        if (report != null) {
-            Yoine y = new Yoine();
+        em.close();
+
+        Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
+        if(r != null && login_employee.getId() != r.getEmployee().getId()) {
+            YoineCnt y = new YoineCnt();
             y.yoineCount(r);
-            sc.setAttribute("report", r);
+
+            request.setAttribute("report", r);
+            request.setAttribute("_token", request.getSession().getId());
+            request.getSession().setAttribute("report_id", r.getId());
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/index.jsp");
