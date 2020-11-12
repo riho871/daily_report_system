@@ -65,7 +65,7 @@ public class ReportsYoineServlet extends HttpServlet {
         }
 
         // フォワード
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/show.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/index.jsp");
         rd.forward(request, response);
 
     }

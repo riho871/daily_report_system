@@ -44,12 +44,10 @@
 
                 <c:if test="${sessionScope.login_employee.id == report.employee.id}">
                     <p><a href="<c:url value="/reports/edit?id=${report.id}" />">この日報を編集する</a></p>
+                </c:if><!--WHEN-->
+                <c:if test="${sessionScope.login_employee.id != report.employee.id}">
+                    <p><a href="<c:url value="/reports/yoine?id=${report.id}" />">この日報にいいねする</a></p>
                 </c:if>
-                    <!--edit-Update
-                    <form method="POST" action="<c:url value='/reports/yoine' />"></form>
-                    <p><a href="<c:url value="/reports/index?id=${report.id}" />">この日報にいいねする</a></p>
-                    /iine/ReportsYoineServlet />"-->
-                    <p><a href="<c:url value="/reports/yoine?action=report" />">この日報にいいねする</a></p>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>
